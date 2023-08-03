@@ -35,22 +35,10 @@ int main()
     unsigned int TextureIndex = 0;
     SetUniform1i(TextureIndex, "texture1",object.Program);
 
-    mat4 transform;
-    vec3 vec = {0.4f, 1.0f,1.0f };
-    vec3 vec1 = {0.5f, 0.5f, 0.5f};
-    vec3 trans = {0.5f, -0.5f, 0.0f};
     
 
 
-    glm_mat4_identity(transform);
-
-    glm_rotate(transform, glm_rad(45.0f), vec);
-    glm_scale(transform,vec1);
-
-    
-
-
-    SetUniformMat4f(&transform[0][0], "transform", object.Program);
+   // SetUniformMat4f(&transform[0][0], "transform", object.Program);
 
 
     printf(glGetString(GL_VERSION));
@@ -65,6 +53,27 @@ int main()
         
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
+
+        mat4 model;
+        mat4 view;
+        mat4 projection;
+
+        vec3 axis = {0.5f, 1.0f, 0.0f};
+        vec3 move = {0.0f, 0.0f, -5.0f};
+
+        glm_mat4_identity(model);
+        glm_mat4_identity(view);
+        glm_mat4_identity(projection);
+
+        glm_rotate(model, (float)glfwGetTime(),axis);
+        glm_translate(&view[0], move);
+        glm_perspective(glm_rad(45.0f), 1200.0f/900.0f, 0.1f, 100.f, projection);
+
+        SetUniformMat4f(&model[0][0], "model", object.Program);
+        SetUniformMat4f(&view[0][0],"view", object.Program );
+        SetUniformMat4f(&projection[0][0], "projection", object.Program);
+
+
 
     
         BindTexture(texture, TextureIndex);
