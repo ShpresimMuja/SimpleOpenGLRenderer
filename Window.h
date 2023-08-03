@@ -1,13 +1,14 @@
 #pragma once 
 #include <stdio.h>
+#include <glad/glad.h>
 #include <glfw3.h>
 
-struct Window 
+typedef  struct Window 
 {
     GLFWwindow * window;
-
+    
     int created; 
-};
+} Window;
 
 
 

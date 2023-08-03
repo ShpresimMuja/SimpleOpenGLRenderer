@@ -148,6 +148,15 @@ void SetUniform1i(unsigned int Value, const char * UniformName, unsigned int Pro
     glUniform1i(glGetUniformLocation(Program, UniformName), Value);
 }
 
+//Sends a float[4][4] to OpenGL as a matrix, accepts the first index of array as float *
+void SetUniformMat4f(float *Value, const char * UniformName, unsigned int Program)
+{
+
+    unsigned int transformLoc = glGetUniformLocation(Program, UniformName);
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, Value);
+
+}
+
 
 
 

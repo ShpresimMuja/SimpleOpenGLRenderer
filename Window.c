@@ -31,6 +31,17 @@ int initiliseWindow(struct Window  *window, int Width, int Height, const char* N
     glfwMakeContextCurrent(window->window);
     glfwSetFramebufferSizeCallback(window->window, framebuffer_size_callback);
 
+    
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+       
+        return -1;
+
+
+    }    
+    
+     glEnable(GL_DEPTH_TEST);
+
 
 }
 

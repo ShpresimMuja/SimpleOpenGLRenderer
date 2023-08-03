@@ -1,11 +1,11 @@
 #pragma once 
+#include "cglm/cglm.h"
 
-
-typedef struct VertexObjects
+typedef struct VertexObjects 
 {
     unsigned int VAO;
     unsigned int VBO;
-};
+} VertexObjects;
 //reads files and returns a pointer to a dynamically allocated batch of memory
 //must be deleted after use.
 char * ReadFile(const char * filename);
@@ -33,9 +33,10 @@ void DrawElements(unsigned int VAO, unsigned int Program, unsigned int ElementNu
 
 void SetUniform4f(float x, float y, float z, float a, unsigned int Program, const char * UniformName);
 void SetUniform1i(unsigned int Value, const char * UniformName, unsigned int Program);
+void SetUniformMat4f(float *Value, const char * UniformName, unsigned int Program);
 
 
-void SetDataAtributes(int index, int vertexRow, int Datarow, void* stride);
+void SetDataAtributes(int ndex, int vertexRow, int Datarow, void* stride);
 
 
 unsigned int LoadTexture(const char * filename);
