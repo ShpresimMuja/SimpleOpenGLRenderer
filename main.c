@@ -58,7 +58,7 @@ int main()
         mat4 view;
         mat4 projection;
 
-        vec3 axis = {0.5f, 1.0f, 0.0f};
+        vec3 axis = {0.0f, 1.0f, 0.0f};
         vec3 move = {0.0f, 0.0f, -5.0f};
 
         glm_mat4_identity(model);
